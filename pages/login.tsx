@@ -59,7 +59,6 @@ const Login: any = (event: any) => {
           name="description"
           content="An administrator tool for Senjin Solutions."
         />
-        <link rel="icon" href="" />
       </Head>
       <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
         <div className="flex justify-center">
