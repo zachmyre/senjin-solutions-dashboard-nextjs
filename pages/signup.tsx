@@ -159,7 +159,7 @@ const SignUp: any = (event: any) => {
               </button>
             </div>
             <div className="mt-6 text-grey-dark">
-              Already have an account?
+              {"Already have an account?"}
               <a className="text-blue-600 hover:underline" href="#">
                 Log in
               </a>

@@ -120,7 +120,7 @@ const Login: any = (event: any) => {
               </button>
             </div>
             <div className="mt-6 text-grey-dark">
-              Don't have an account?
+              {"Don't have an account?"}
               <a className="text-blue-600 hover:underline" href="#">
                 Sign up
               </a>
