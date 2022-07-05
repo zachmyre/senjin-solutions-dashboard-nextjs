@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 
 function ActiveLink({ children, href, className }: any) {
   const router = useRouter();
-  const style = {
+  const style: any = {
     marginRight: 10,
-    color: router.asPath === href ? "red" : "",
+    color: router.asPath === href ? "red" : "unset",
   };
 
   const handleClick = (e: any) => {
