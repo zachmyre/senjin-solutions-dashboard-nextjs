@@ -1,5 +1,9 @@
 import { MongoClient } from "mongodb";
 
+declare global {
+  var _mongoClientPromise: any;
+}
+
 const uri: any = process.env.MONGODB_URI;
 const options: any = {
   useUnifiedTopology: true,
