@@ -19,7 +19,7 @@ export default async (req: any, res: any) => {
       }
 
       if (data) {
-        res.status(200).send({ message: data });
+        res.status(200).send({ message: user });
         return;
       } else {
         res.status(401).send({ message: "Invalid credentials." });

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import clientPromise from "../utils/mongodb/database";
 import SideNavbar from "../components/shared/SideNavbar";
 
 const Home: NextPage = () => {
+
   return (
     <div>
       <Head>
@@ -18,5 +18,7 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+
 
 export default Home;

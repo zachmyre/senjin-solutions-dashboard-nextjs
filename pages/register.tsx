@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Alert } from "@mui/material";
+import { setSession } from "../utils/session/localStorage";
 
 export interface UserRegistration {
   name: string;
@@ -10,7 +11,7 @@ export interface UserRegistration {
   verifyPassword: string;
 }
 
-const SignUp: any = (event: any) => {
+const Register: any = (event: any) => {
   const router = useRouter();
   const [userRegistration, setUserRegistration] = useState<UserRegistration>({
     name: "",
@@ -35,7 +36,7 @@ const SignUp: any = (event: any) => {
     if (!registerErrorHandler()) {
       return;
     }
-    fetch("/api/user/signup", {
+    fetch("/api/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,6 +48,8 @@ const SignUp: any = (event: any) => {
           let response = await res.json();
           setError(response.message);
         } else {
+          let response = await res.json();
+          setSession(response.message);
           router.replace("/");
         }
       })
@@ -171,4 +174,4 @@ const SignUp: any = (event: any) => {
   );
 };
 
-export default SignUp;
+export default Register;
