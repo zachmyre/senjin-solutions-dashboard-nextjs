@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Alert } from "@mui/material";
-import { setSession, getSession, isAuthenticated } from "../utils/session/localStorage";
+import Cookies from "js-cookie";
 
 export interface LoginForm {
   email: string;
@@ -11,13 +11,6 @@ export interface LoginForm {
 
 const Login: any = (event: any) => {
   const router = useRouter();
-  
-  useEffect(() => {
-    if(!isAuthenticated()){
-      router.replace('/login')
-      return;
-    }
-  })
 
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: "",
@@ -40,7 +33,7 @@ const Login: any = (event: any) => {
     if (!loginErrorHandler()) {
       return;
     }
-    await fetch("/api/user/login", {
+    await fetch("/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +46,7 @@ const Login: any = (event: any) => {
           setError(response.message);
         } else {
           let response = await res.json();
-          setSession(response.message);
+          if (response.message) Cookies.set("token", response.message);
           router.replace("/");
         }
       })

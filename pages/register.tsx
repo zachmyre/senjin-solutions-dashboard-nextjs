@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Alert } from "@mui/material";
-import { setSession } from "../utils/session/localStorage";
+import Cookies from "js-cookie";
 
 export interface UserRegistration {
   name: string;
@@ -36,7 +36,7 @@ const Register: any = (event: any) => {
     if (!registerErrorHandler()) {
       return;
     }
-    fetch("/api/user/register", {
+    fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const Register: any = (event: any) => {
           setError(response.message);
         } else {
           let response = await res.json();
-          setSession(response.message);
+          if (response.message) Cookies.set("token", response.message);
           router.replace("/");
         }
       })

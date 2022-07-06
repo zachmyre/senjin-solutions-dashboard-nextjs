@@ -18,22 +18,9 @@ import { BiMessageSquareDots } from "react-icons/bi";
 import ActiveLink from "./ActiveLink";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getUser, isAuthenticated, deleteSession } from "../../utils/session/localStorage";
+import { setLogout } from "../../utils/auth/jwt";
 
-const SideNavbar = () => {
-  const router = useRouter();
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    if(!isAuthenticated()){
-      router.replace('/login')
-      return;
-    } else {
-      setUser(getUser());
-      console.log(user);
-    }
-  }, [router])
-
+const SideNavbar = ({ profile }: any) => {
   return (
     <div>
       <Disclosure>
@@ -49,7 +36,7 @@ const SideNavbar = () => {
           <h1 className="text-base text-center cursor-pointer font-bold text-blue-900 border-gray-100 pb-4 w-full">
             Senjin Solutions
           </h1>
-          {user && (
+          {profile && (
             <div className="flex flex-col items-center justify-center">
               <Image
                 className="rounded-full"
@@ -58,7 +45,7 @@ const SideNavbar = () => {
                 width="144"
                 alt="Rounded avatar"
               />
-              <h4 className="text-gray-900 font-semibold">{user.name}</h4>
+              <h4 className="text-gray-900 font-semibold">{profile.name}</h4>
             </div>
           )}
           <div className="my-4 border-b border-gray-100 pb-4">
@@ -108,8 +95,10 @@ const SideNavbar = () => {
             </div>
           </div>
           <div className="my-4 border-b border-gray-100 pb-4">
-            <div onClick={() => {deleteSession();
-            router.replace('/login');}} className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+            <div
+              onClick={(e) => setLogout(e)}
+              className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+            >
               <MdOutlineLogout className=" text-2xl text-gray-600 group-hover:text-white" />
               <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
                 Logout
