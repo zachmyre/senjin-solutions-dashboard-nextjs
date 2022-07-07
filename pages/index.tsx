@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import SideNavbar from "../components/shared/SideNavbar";
 import { getAppCookies, verifyToken } from "../utils/auth/jwt";
+import { getWeather } from "../utils/http/weather";
+import PageContainer from "../components/shared/PageContainer";
+import WeatherCard from "../components/dashboard/WeatherCard";
 
 const Home: NextPage = (props: any) => {
   const router = useRouter();
@@ -25,18 +28,25 @@ const Home: NextPage = (props: any) => {
         <link rel="icon" href="" />
       </Head>
       <SideNavbar profile={props.profile} />
+      <PageContainer>
+        <WeatherCard
+          weather={props.weather}
+          className="w-full lg:w-1/5 h-fit mx-2 p-2"
+        />
+      </PageContainer>
     </div>
   );
 };
 
 export async function getServerSideProps(context: any) {
   const { req } = context;
-
+  const weather = await getWeather();
   const { token } = getAppCookies(req);
   const profile = token ? verifyToken(token) : "";
   return {
     props: {
       profile,
+      weather,
     },
   };
 }
