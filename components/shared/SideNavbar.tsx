@@ -11,13 +11,9 @@ import {
   MdOutlineSettings,
   MdOutlineLogout,
 } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import { FaRegComments } from "react-icons/fa";
-import { BiMessageSquareDots } from "react-icons/bi";
 
 import ActiveLink from "./ActiveLink";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+
 import { setLogout } from "../../utils/auth/jwt";
 
 const SideNavbar = ({ profile }: any) => {
