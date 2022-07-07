@@ -1,17 +1,18 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import { WeatherCard } from "../../types/Cards";
 
 const WeatherCard = ({ className, weather }: WeatherCard) => {
   const weatherMap = {
-    location: weather.location.name,
-    condition: weather.current.condition.text,
-    conditionIconUrl: weather.current.condition.icon,
-    time: new Date(weather.location.localtime).toLocaleString(),
-    temp: weather.current.temp_f,
-    feelsLike: weather.current.feelslike_f,
-    humidity: weather.current.humidity,
+    location: weather.location.name ?? "Location N/A",
+    condition: weather.current.condition.text ?? "N/A",
+    conditionIconUrl: weather.current.condition.icon ?? "",
+    time:
+      new Date(weather.location.localtime).toLocaleString() ??
+      new Date().toLocaleString(),
+    temp: weather.current.temp_f ?? "00",
+    feelsLike: weather.current.feelslike_f ?? "00",
+    humidity: weather.current.humidity ?? "00",
   };
   console.log(weather);
   return (
