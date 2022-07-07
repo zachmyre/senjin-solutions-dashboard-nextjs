@@ -111,7 +111,7 @@ const Login: any = (event: any) => {
             <div className="flex">
               <button
                 onClick={(event) => login(event)}
-                className="w-full px-6 py-2 mt-4 text-white bg-primary rounded-lg hover:bg-blue-900"
+                className="w-full px-6 py-2 mt-4 text-white bg-primary rounded-lg hover:bg-gray-300"
               >
                 Login
               </button>
