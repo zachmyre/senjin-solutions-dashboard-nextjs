@@ -24,3 +24,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.rbc-today{
+  background: white !important;
+}
+
+.rbc-event-content{
+  padding: .1em !important;
+}
+.rbc-button-lin,.rbc-show-more{
+  color: black !important;
+}
