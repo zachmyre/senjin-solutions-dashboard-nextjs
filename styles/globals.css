@@ -35,3 +35,8 @@ a {
 .rbc-button-lin,.rbc-show-more{
   color: black !important;
 }
+
+.rbc-toolbar-label{
+  font-weight: bold !important;
+  font-size: 1.5em !important
+}

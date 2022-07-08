@@ -1,7 +1,7 @@
 const API_URL =
   process.env.ENVIRONMENT == "development"
     ? process.env.DEV_URL
-    : process.env.PROD_URL;
+    : process.env.PROD_URL ?? "";
 
 export const getCalendarEvents = async (id: string) => {
   const eventRequest = await fetch(`${API_URL}/api/calendar/getEvents`, {
@@ -18,6 +18,7 @@ export const getCalendarEvents = async (id: string) => {
 };
 
 export const addCalendarEvent = async (eventObject: any) => {
+  console.log(API_URL);
   eventObject.allDay = isAllDayEvent(eventObject.start, eventObject.end);
   const eventRequest = await fetch(`${API_URL}/api/calendar/addEvent`, {
     method: "POST",
@@ -28,6 +29,7 @@ export const addCalendarEvent = async (eventObject: any) => {
   });
 
   const events = await eventRequest.json();
+  console.log(events);
   if (events.error) {
     return false;
   }
