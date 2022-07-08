@@ -40,3 +40,13 @@ a {
   font-weight: bold !important;
   font-size: 1.5em !important
 }
+
+.rbc-toolbar{
+  flex-direction: column !important;
+}
+
+@media (min-width: 768px) {
+  .rbc-toolbar {
+    flex-direction: row !important;
+  }
+}

@@ -65,7 +65,7 @@ const Calendar = ({ events, profile }: any) => {
   }
 
   return (
-    <div className="h-[85%] w-[87%]">
+    <div className="h-full w-full md:h-[85%] md:w-[87%]">
       <BigCalendar
         dayLayoutAlgorithm={dayLayoutAlgorithm}
         defaultView={Views.MONTH}
