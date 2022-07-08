@@ -2,11 +2,11 @@ import {
   Calendar as BigCalendar,
   momentLocalizer,
   Views,
-  DateLocalizer,
 } from "react-big-calendar";
 import moment from "moment";
 import { useCallback, useState } from "react";
 import { addCalendarEvent } from "../../utils/http/events";
+import { ToastContainer, toast } from "react-toastify";
 
 // Setup the localizer by providing the moment (or globalize, or Luxon) Object
 // to the correct localizer.
@@ -28,20 +28,17 @@ const Calendar = ({ events, profile }: any) => {
           title,
         });
         if (!req) {
-          window.alert("Error!");
+          toast.error("Error!");
           return;
         }
-        window.alert("Added calendar event!");
+        toast.success("Added successfully!");
         return;
       }
     },
     [setEvents]
   );
 
-  const handleSelectEvent = useCallback(
-    (event: any) => window.alert(event.title),
-    []
-  );
+  const handleSelectEvent = useCallback((event: any) => toast(event.title), []);
 
   function eventStyleGetter(
     event: any,
@@ -49,8 +46,6 @@ const Calendar = ({ events, profile }: any) => {
     end: any,
     isSelected: any
   ): any {
-    console.log(event);
-    var backgroundColor = "#" + event.hexColor;
     var style = {
       backgroundColor: isSelected ? "#e5e0bb" : "black",
       borderRadius: "30px",
@@ -76,6 +71,7 @@ const Calendar = ({ events, profile }: any) => {
         selectable
         eventPropGetter={eventStyleGetter}
       />
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };
