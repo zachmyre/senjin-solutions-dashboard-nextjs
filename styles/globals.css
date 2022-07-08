@@ -51,6 +51,6 @@ a {
   }
 }
 
-.Toastify__progress-bar, .Toastify__progress-bar--animated, .Toastify__progress-bar-theme--light, .Toastify__progress-bar--default{
-  background: rgb(165,161,127) !important;
+svg{
+  fill: rgb(165,161,127) !important;
 }

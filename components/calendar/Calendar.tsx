@@ -38,7 +38,15 @@ const Calendar = ({ events, profile }: any) => {
     [setEvents]
   );
 
-  const handleSelectEvent = useCallback((event: any) => toast(event.title), []);
+  const handleSelectEvent = useCallback(
+    (event: any) =>
+      toast.info(event.title, {
+        position: "top-center",
+        hideProgressBar: true,
+        autoClose: 7000,
+      }),
+    []
+  );
 
   function eventStyleGetter(
     event: any,
@@ -71,7 +79,17 @@ const Calendar = ({ events, profile }: any) => {
         selectable
         eventPropGetter={eventStyleGetter}
       />
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
