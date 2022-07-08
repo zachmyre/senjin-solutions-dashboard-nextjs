@@ -14,7 +14,6 @@ const WeatherCard = ({ className, weather }: WeatherCard) => {
     feelsLike: weather.current.feelslike_f ?? "00",
     humidity: weather.current.humidity ?? "00",
   };
-  console.log(weather);
   return (
     <Card
       className={`${className} p-6 pb-0`}

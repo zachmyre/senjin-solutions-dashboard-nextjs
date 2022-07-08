@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Alert } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
@@ -13,6 +13,8 @@ export interface LoginForm {
 
 const Login: any = (event: any) => {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
 
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: "",
@@ -35,6 +37,7 @@ const Login: any = (event: any) => {
     if (!loginErrorHandler()) {
       return;
     }
+    setLoading(true);
     await fetch("/api/auth/login", {
       method: "POST",
       headers: {
@@ -44,6 +47,7 @@ const Login: any = (event: any) => {
     })
       .then(async (res: any) => {
         if (res.status != 200) {
+          setLoading(false);
           let response = await res.json();
           setError(response.message);
         } else {
@@ -53,6 +57,7 @@ const Login: any = (event: any) => {
         }
       })
       .catch((err) => {
+        setLoading(false);
         setError(err);
       });
   };
@@ -113,7 +118,8 @@ const Login: any = (event: any) => {
                 onClick={(event) => login(event)}
                 className="w-full px-6 py-2 mt-4 text-white bg-primary rounded-lg hover:bg-gray-300"
               >
-                Login
+                {!loading && <p>Login</p>}
+                {loading && <CircularProgress size={24} color="inherit" />}
               </button>
             </div>
             <div className="mt-6 text-grey-dark">

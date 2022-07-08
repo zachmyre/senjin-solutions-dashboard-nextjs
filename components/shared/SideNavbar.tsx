@@ -29,7 +29,7 @@ const SideNavbar = ({ profile }: any) => {
       </Disclosure>
       <div className="p-6 w-1/2 h-screen bg-white z-20 fixed top-0 -left-96 lg:w-60 lg:left-0 peer-focus:left-0 peer:transition each-out delay-150 duration-200">
         <div className="flex flex-col justify-start items-center">
-          {/* <h1 className="text-base text-center cursor-pointer font-bold text-gray-300 border-gray-100 pb-4 w-full">
+          {/* <h1 className="text-base text-center cursor-pointer  font-bold text-gray-300 border-gray-100 pb-4 w-full">
             Senjin Solutions
           </h1> */}
           {profile && (
@@ -48,42 +48,60 @@ const SideNavbar = ({ profile }: any) => {
           )}
           <div className="my-4 border-b border-gray-100 pb-4">
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdOutlineSpaceDashboard className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/">Dashboard</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Dashboard</h3>
+              </ActiveLink>
             </div>
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdCalendarToday className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/calendar">Calendar</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/calendar"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdCalendarToday className=" text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Calendar</h3>
+              </ActiveLink>
             </div>
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdPersonOutline className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/customers">Customers</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/customers"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdPersonOutline className=" text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Customers</h3>
+              </ActiveLink>
             </div>
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdOutlineTaskAlt className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/tasks">Tasks</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/tasks"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdOutlineTaskAlt className=" text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Tasks</h3>
+              </ActiveLink>
             </div>
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdNoteAlt className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/notes">Notes</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/notes"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdNoteAlt className=" text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Notes</h3>
+              </ActiveLink>
             </div>
           </div>
           <div className="my-4 border-b border-gray-100 pb-4">
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <MdOutlineSettings className=" text-2xl text-gray-600 group-hover:text-white" />
-              <h3 className="text-base font-semibold text-gray-800 group-hover:text-white">
-                <ActiveLink href="/settings">Settings</ActiveLink>
-              </h3>
+              <ActiveLink
+                href="/settings"
+                className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
+              >
+                <MdOutlineSettings className=" text-2xl text-gray-600 group-hover:text-white" />
+                <h3 className="group-hover:text-white">Settings</h3>
+              </ActiveLink>
             </div>
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
               <MdOutlineMoreHoriz className=" text-2xl text-gray-600 group-hover:text-white" />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Alert } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
@@ -22,6 +22,7 @@ const Register: any = (event: any) => {
     verifyPassword: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const registerErrorHandler = () => {
@@ -38,6 +39,7 @@ const Register: any = (event: any) => {
     if (!registerErrorHandler()) {
       return;
     }
+    setLoading(true);
     fetch("/api/auth/register", {
       method: "POST",
       headers: {
@@ -47,6 +49,7 @@ const Register: any = (event: any) => {
     })
       .then(async (res: any) => {
         if (res.status != 200) {
+          setLoading(false);
           let response = await res.json();
           setError(response.message);
         } else {
@@ -56,6 +59,7 @@ const Register: any = (event: any) => {
         }
       })
       .catch((err) => {
+        setLoading(false);
         setError(err);
       });
   };
@@ -151,7 +155,8 @@ const Register: any = (event: any) => {
                 onClick={(event) => signUp(event)}
                 className="w-full px-6 py-2 mt-4 text-white bg-primary rounded-lg hover:bg-gray-300"
               >
-                Create Account
+                {!loading && <p>Create Account</p>}
+                {loading && <CircularProgress size={24} color="inherit" />}
               </button>
             </div>
             <div className="mt-6 text-grey-dark">

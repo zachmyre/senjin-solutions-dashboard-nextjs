@@ -23,7 +23,7 @@ export default async (req: any, res: any) => {
       if (data) {
         const { _id, email, name } = user;
         let tokenData = jwt.sign({ _id, email, name }, SECRET_KEY, {
-          expiresIn: "7d",
+          expiresIn: "7 days",
         });
         return res.status(200).send({ message: tokenData });
       } else {
