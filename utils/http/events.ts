@@ -18,7 +18,6 @@ export const getCalendarEvents = async (id: string) => {
 };
 
 export const addCalendarEvent = async (eventObject: any) => {
-  console.log(API_URL);
   eventObject.allDay = isAllDayEvent(eventObject.start, eventObject.end);
   const eventRequest = await fetch(`${API_URL}/api/calendar/addEvent`, {
     method: "POST",
@@ -29,7 +28,6 @@ export const addCalendarEvent = async (eventObject: any) => {
   });
 
   const events = await eventRequest.json();
-  console.log(events);
   if (events.error) {
     return false;
   }

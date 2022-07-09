@@ -10,7 +10,7 @@ export default async (req: any, res: any) => {
     .find({ user_id: req.body.user_id })
     .forEach((e: any) => {
       events.push({
-        id: e._id,
+        _id: e._id,
         title: e.title,
         allDay: true,
         start: new Date(e.start),
