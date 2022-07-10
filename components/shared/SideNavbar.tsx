@@ -65,7 +65,7 @@ const SideNavbar = ({ profile }: any) => {
                 <h3 className="group-hover:text-white">Calendar</h3>
               </ActiveLink>
             </div>
-            <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+            {/* <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
               <ActiveLink
                 href="/customers"
                 className="text-base font-semibold text-gray-800 group-hover:text-white flex space-x-4"
@@ -73,7 +73,7 @@ const SideNavbar = ({ profile }: any) => {
                 <MdPersonOutline className=" text-2xl text-gray-600 group-hover:text-white" />
                 <h3 className="group-hover:text-white">Customers</h3>
               </ActiveLink>
-            </div>
+            </div> */}
             <div className="flex mb-2 justify-start items-center gap-4 px-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
               <ActiveLink
                 href="/tasks"

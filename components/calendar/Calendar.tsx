@@ -7,7 +7,7 @@ import moment from "moment";
 import { useCallback, useState } from "react";
 import { addCalendarEvent, deleteCalendarEvent } from "../../utils/http/events";
 import { ToastContainer, toast } from "react-toastify";
-import { Backdrop, Box, Card, Fade, Modal, Typography } from "@mui/material";
+import { Backdrop, Box, Card, CircularProgress, Fade, Modal, Typography } from "@mui/material";
 
 // Setup the localizer by providing the moment (or globalize, or Luxon) Object
 // to the correct localizer.
@@ -128,8 +128,8 @@ const modalStyle = {
 };
 
   return (
-    <div className="h-full w-full md:h-[85%] md:w-[87%]">
-      <BigCalendar
+    <div className="h-full w-full md:h-[83%] md:w-[83%]">
+      {myEvents.length > 0 ? <BigCalendar
         dayLayoutAlgorithm={dayLayoutAlgorithm}
         defaultView={Views.MONTH}
         localizer={localizer}
@@ -138,7 +138,8 @@ const modalStyle = {
         onSelectSlot={handleSelectSlot}
         selectable
         eventPropGetter={eventStyleGetter}
-      />
+      /> : <div className="w-full h-full md:h-[83%] md:w-[83%] flex items-center justify-center"><CircularProgress size={48} color="inherit" /></div>}
+      
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -175,7 +176,7 @@ const modalStyle = {
               <div className="flex items-center justify-around my-4 space-x-2">
                <button className="w-1/3 px-6 py-2 text-white bg-primary rounded-lg hover:bg-gray-300" onClick={() => updateEvent()}>Update</button>
                <button className="w-1/3 px-6 py-2 text-white bg-black rounded-lg hover:bg-primary" onClick={() => deleteEvent()}>Delete</button>
-            <button className="w-1/3 px-6 py-2 text-white bg-gray-300 rounded-lg hover:bg-primary" onClick={() => resetModal()}>Cancel</button>
+            <button className="w-1/3 px-6 py-2 text-white bg-gray-300 rounded-lg hover:bg-gray-400" onClick={() => resetModal()}>Cancel</button>
             </div>
           </Box>
         </Fade>
