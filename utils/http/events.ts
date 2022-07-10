@@ -34,6 +34,22 @@ export const addCalendarEvent = async (eventObject: any) => {
   return true;
 };
 
+export const deleteCalendarEvent = async (eventObject: any) => {
+  const eventRequest = await fetch(`${API_URL}/api/calendar/deleteEvent`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(eventObject),
+  });
+
+  const events = await eventRequest.json();
+  if (events.error) {
+    return false;
+  }
+  return true;
+};
+
 export const isAllDayEvent = (start: any, end: any) => {
   if (start - end == -86400000) {
     return true;

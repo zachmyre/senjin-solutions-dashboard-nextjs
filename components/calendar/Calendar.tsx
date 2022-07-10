@@ -5,7 +5,7 @@ import {
 } from "react-big-calendar";
 import moment from "moment";
 import { useCallback, useState } from "react";
-import { addCalendarEvent } from "../../utils/http/events";
+import { addCalendarEvent, deleteCalendarEvent } from "../../utils/http/events";
 import { ToastContainer, toast } from "react-toastify";
 import { Backdrop, Box, Card, Fade, Modal, Typography } from "@mui/material";
 
@@ -69,9 +69,26 @@ const Calendar = ({ events, profile }: any) => {
       toast.error("Error!");
       return;
     }
+    const objIndex = myEvents.findIndex(((event: any) => event._id == currentEvent._id ));
+    const newEvents = myEvents;
+    newEvents[objIndex] = currentEvent;
+    setEvents(newEvents);
     toast.success("Updated successfully!");
+    resetModal();
     return;
   };
+
+  const deleteEvent = async () => {
+    const req = await deleteCalendarEvent(currentEvent);
+    if (!req) {
+      toast.error("Error!");
+      return;
+    }
+    setEvents(myEvents.filter((event: any) => event._id != currentEvent._id))
+    toast.success("Deleted successfully!");
+    resetModal();
+    return;
+  }
 
   const resetModal = () => {
     setShowModal(false); 
@@ -105,7 +122,7 @@ const modalStyle = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: '30px',
   boxShadow: 24,
   p: 4,
 };
@@ -146,16 +163,18 @@ const modalStyle = {
       >
         <Fade in={showModal}>
           <Box sx={modalStyle}>
-          <input
+          <textarea
+          rows={4}
+          cols={4}
                 onChange={(event) =>
                   {setCurrentEvent({...currentEvent, user_id: profile._id, title: event.target.value}); }
                                }
-                type="text"
                 value={currentEvent.title}
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none ring-1 ring-primary"
               />
-              <div className="flex items-center justify-around my-4">
-               <button className="w-1/3 px-6 py-2 text-white bg-primary rounded-lg hover:bg-gray-300" onClick={() => {updateEvent(); resetModal();}}>Update</button>
+              <div className="flex items-center justify-around my-4 space-x-2">
+               <button className="w-1/3 px-6 py-2 text-white bg-primary rounded-lg hover:bg-gray-300" onClick={() => updateEvent()}>Update</button>
+               <button className="w-1/3 px-6 py-2 text-white bg-black rounded-lg hover:bg-primary" onClick={() => deleteEvent()}>Delete</button>
             <button className="w-1/3 px-6 py-2 text-white bg-gray-300 rounded-lg hover:bg-primary" onClick={() => resetModal()}>Cancel</button>
             </div>
           </Box>
