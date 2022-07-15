@@ -27,8 +27,7 @@ const CalendarCard = ({ className, profile }: any) => {
           return event;
         }
       });
-      console.log(fetchedEvents);
-      console.log(currentEvents);
+
       if (currentEvents.length > 0) {
         setEvents(currentEvents);
       }
