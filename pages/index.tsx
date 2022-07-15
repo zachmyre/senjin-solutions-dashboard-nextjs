@@ -32,11 +32,11 @@ const Home: NextPage = (props: any) => {
       <PageContainer>
         <WeatherCard
           weather={props.weather}
-          className="w-full lg:w-1/5 h-1/3 mx-5 p-2"
+          className="w-[95%] lg:w-1/5 h-1/3 mx-5 p-2"
         />
         <CalendarCard
           profile={props.profile}
-          className="w-full lg:w-1/5 h-1/3 mx-5 p-2"
+          className="w-[95%] lg:w-1/5 h-1/3 mx-5 p-2"
         />
       </PageContainer>
     </div>
