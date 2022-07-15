@@ -64,7 +64,7 @@ const CalendarCard = ({ className, profile }: any) => {
       <CardContent className="space-y-4 p-0 m-0">
         <div className="space-y-2">
           <h1 className="text-2xl border-b-4 border-primary pb-2">
-            Today's Calendar
+            {" Today's Calendar "}
           </h1>
           <ul>
             {events.map((event, i) => (
