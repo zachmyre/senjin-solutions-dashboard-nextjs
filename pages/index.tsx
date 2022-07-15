@@ -7,6 +7,7 @@ import { getAppCookies, verifyToken } from "../utils/auth/jwt";
 import { getWeather } from "../utils/http/weather";
 import PageContainer from "../components/shared/PageContainer";
 import WeatherCard from "../components/dashboard/WeatherCard";
+import CalendarCard from "../components/dashboard/CalendarCard";
 
 const Home: NextPage = (props: any) => {
   const router = useRouter();
@@ -31,7 +32,11 @@ const Home: NextPage = (props: any) => {
       <PageContainer>
         <WeatherCard
           weather={props.weather}
-          className="w-full lg:w-1/5 h-fit mx-2 p-2"
+          className="w-full lg:w-1/5 h-1/4 mx-2 p-2"
+        />
+        <CalendarCard
+          profile={props.profile}
+          className="w-full lg:w-1/5 h-1/4 mx-2 p-2"
         />
       </PageContainer>
     </div>
